@@ -1,7 +1,5 @@
 package structs
 
-import "math"
-
 type Rectangle struct {
 	Width  float64
 	Height float64
@@ -9,6 +7,11 @@ type Rectangle struct {
 
 type Circle struct {
 	Radius float64
+}
+
+type Triangle struct {
+	Height float64
+	Base   float64
 }
 
 type Shape interface {
@@ -20,9 +23,10 @@ func (rectangle Rectangle) Perimeter() float64 {
 }
 
 // burada circle Circle kısmı go'da receiver diye geçiyor
+//
 //	Circle struct'ına ait bir fonksiyon oluyor
 func (circle Circle) Perimeter() float64 {
-	return 2 * math.Pi * circle.Radius
+	return 2 * 3 * circle.Radius
 }
 
 func (rectangle Rectangle) Area() float64 {
@@ -30,5 +34,9 @@ func (rectangle Rectangle) Area() float64 {
 }
 
 func (circle Circle) Area() float64 {
-	return math.Pi * circle.Radius * circle.Radius
+	return 3 * circle.Radius * circle.Radius
+}
+
+func (triangle Triangle) Area() float64 {
+	return triangle.Height * triangle.Base / 2
 }
